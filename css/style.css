@@ -1,20 +1,117 @@
-.nav_links {
-    display: flex;
-    flex-direction: column;
+/* 1. Logo animation */
+@keyframes show_logo {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
 }
 
+#logo {
+    animation-name: show_logo;
+    animation-duration: 5s;
+}
+
+/* 2. Body font & background */
 body {
     font-family: "Poppins", serif;
     background-image: url("../images/concrete_seamless.png");
     background-color: #f1f1f1;
 }
 
+/* 3&4. Header & nav_links flex style */
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 5. Visited links color ??? */
+a:visited {
+    color: blue;
+}
+
+/* 6. Card header style */
 .card > header {
     background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
+
+/* 7&8. Pricing & card flex style */
+.card {
+    border-top-left-radius: 50px; /* for step 6 */
+    border-top-right-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 450px; /* what is initial width? */
+}
+
+.pricing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 9. Images in gallery style */
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* 10. Gallery flex style */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+@media screen and (min-width: 900px) {
+
+    /* 11. New header style */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* 12. New pricing style */
+    .pricing {
+        flex-direction: row;
+    }
+    .card {
+        width: 275px;
+    }
+
+    /* 13. Header remains visible */
+    body > header {
+        position: sticky;
+        top: 0;
+        /* width: 100%; */
+    }
+}
+
+
+/* 14. Disable animation */
+@media (prefers-reduced-motion) {
+    #logo {
+        animation: none;
+    }
+}
+
