@@ -54,12 +54,13 @@ a:visited {
     border-top-right-radius: 50px;
     display: flex;
     flex-direction: column;
-    width: 450px; /* what is initial width? */
+    flex-basis: 450px; /* what is initial width? */
 }
 
 .pricing {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -92,18 +93,17 @@ a:visited {
     }
 
     /* 12. New pricing style */
-    .pricing {
+    /* .pricing {
         flex-direction: row;
-    }
+    } */
     .card {
-        width: 275px;
+        flex-basis: 275px; /* ??? */
     }
 
     /* 13. Header remains visible */
     body > header {
         position: sticky;
         top: 0;
-        /* width: 100%; */
     }
 }
 
@@ -111,7 +111,51 @@ a:visited {
 /* 14. Disable animation */
 @media (prefers-reduced-motion) {
     #logo {
-        animation: none;
+        animation: none; /* size correct??? */
     }
 }
 
+
+@media print {
+    
+    /* 15&16. Change font & remove background image */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* 17. Edit nav & nav_links style */
+    nav {
+        width: 100%; /* let the navigation bar take up the whole line */
+    }
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .pricing {
+        /* flex-direction: row; */
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* 20. Hide gallery part */
+    #gallery, .gallery * {
+        /* display: none; */
+        visibility: collapse;
+    }
+
+    .gallery * {
+        display: none;
+    }
+
+    /* Without using list-style-type add the thumbs up entity as shown in the cards.  */
+    .card li:nth-child(2):after {
+        content: '\1F44D';
+    }
+}
