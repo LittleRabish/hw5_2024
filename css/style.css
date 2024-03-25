@@ -54,12 +54,13 @@ a:visited {
     border-top-right-radius: 50px;
     display: flex;
     flex-direction: column;
-    flex-basis: 450px; /* what is initial width? */
+    flex-basis: 450px; /* specify the initial length of a flex item, 
+    width if `flex-direction: row`!!! */
 }
 
 .pricing {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: row; /* This is an amazing design! */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -92,12 +93,10 @@ a:visited {
         flex-direction: row;
     }
 
-    /* 12. New pricing style */
-    /* .pricing {
-        flex-direction: row;
-    } */
+    /* 12. New pricing & card style */
+    /* no need to modify pricing class */
     .card {
-        flex-basis: 275px; /* ??? */
+        flex-basis: 275px;
     }
 
     /* 13. Header remains visible */
@@ -111,7 +110,7 @@ a:visited {
 /* 14. Disable animation */
 @media (prefers-reduced-motion) {
     #logo {
-        animation: none; /* size correct??? */
+        animation: none;
     }
 }
 
@@ -133,9 +132,9 @@ a:visited {
         justify-content: space-around;
     }
 
+    /* 18&19. Edit pricing & card style */
     .pricing {
-        /* flex-direction: row; */
-        flex-wrap: nowrap;
+        flex-wrap: nowrap; /* allow the cards to shrink and fit into one line */
         align-items: flex-end;
     }
 
@@ -147,14 +146,14 @@ a:visited {
     /* 20. Hide gallery part */
     #gallery, .gallery * {
         /* display: none; */
-        visibility: collapse;
+        visibility: hidden;
     }
 
     .gallery * {
         display: none;
     }
 
-    /* Without using list-style-type add the thumbs up entity as shown in the cards.  */
+    /* 21. Add thumbs up entity */
     .card li:nth-child(2):after {
         content: '\1F44D';
     }
